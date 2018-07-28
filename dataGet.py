@@ -32,20 +32,20 @@ def get_one_page(url):
 def parse_one_page(html):
     soup = BeautifulSoup(html,'lxml')
     movieUrls = soup.find_all('div',{'id':'ranks-list'})
-    # for movieUrl in movieUrls:
-    #     url=movieUrl.find_all('ul',class_='row')
-    #     print(url.get('data-com'))
+    print(movieUrls)
+    for movieUrl in movieUrls:
+        urls=movieUrl.find_all('ul',class_='row')
+        for url in urls:
+            print(url.get('data-com'))
 
     movieNames=soup.find_all('p',class_='first-line')
     movieDates = soup.find_all('p',class_='second-line')
 
-    # for name in movieNames:
-    #     print(movieNames.__len__())
-    #     print(name.get_text())
-    # for date in movieDates:
-    #     print(date.get_text())
-    for url in movieUrls:
-        print(url.get('data-com'))
+    for name in movieNames:
+        print(name.get_text())
+    for date in movieDates:
+        print(date.get_text())
+
 
 def main():
     url = 'http://piaofang.maoyan.com/rankings/year?year=2017&limit=100&tab=2'
