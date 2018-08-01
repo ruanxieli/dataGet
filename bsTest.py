@@ -7,6 +7,9 @@
 
 # -*- coding:utf-8 -*-
 from bs4 import  BeautifulSoup
+
+import re
+
 '''
 soup=BeautifulSoup(html,'lxml')   #创建一个对象
 soup.title                       #打印标签中的所有内容
@@ -124,5 +127,14 @@ print all_p
 print all_p[0].get_text()
 '''
 
-all_p=soup.find('p')
-print all_p.string()
+# all_p=soup.find('p')
+# print all_p.string()
+
+
+def convert(s):
+    return ''.join([r'\u', s.strip('&#x;')]).decode('unicode_escape')
+
+ss='&#xf745;'
+ss = unicode(ss, 'gbk') # convert gbk-encoded byte-string ss to unicode string
+
+print re.sub(r'&#x....;', lambda match: convert(match.group()), ss)
