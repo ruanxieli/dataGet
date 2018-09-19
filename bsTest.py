@@ -134,7 +134,7 @@ print all_p[0].get_text()
 def convert(s):
     return ''.join([r'\u', s.strip('&#x;')]).decode('unicode_escape')
 
-ss='&#xf745;'
-ss = unicode(ss, 'gbk') # convert gbk-encoded byte-string ss to unicode string
-
-print re.sub(r'&#x....;', lambda match: convert(match.group()), ss)
+# ss='&#xf745;'
+# ss = unicode(ss, 'gbk') # convert gbk-encoded byte-string ss to unicode string
+#
+# print re.sub(r'&#x....;', lambda match: convert(match.group()), ss)
